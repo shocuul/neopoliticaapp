@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('ColumnasCtrl', function($scope) {})
+.controller('ColumnasCtrl', function($scope,$http) {
+  $http.get('http://neopoliticatv.org?json=get_recent_posts').success(function(data){
+    console.log(data);
+  })
+})
 
 .controller('VideosCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
