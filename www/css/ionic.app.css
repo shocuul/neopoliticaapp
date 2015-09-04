@@ -7746,6 +7746,9 @@ a.button {
   color: #2e3f53;
   opacity: 1; }
 
+.body-neo .tabs-color-active-positive .tab-item.activated {
+  color: #FFF; }
+
 .body-neo .tabs-color-active-positive .tab-item {
   color: #DDD; }
 
