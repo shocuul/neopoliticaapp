@@ -4,8 +4,8 @@ in ionic's _variables.scss file.
 
 For example, you might change some of the default colors:
 
-
-
+$light:                           #444 !default;
+$stable:                          #EF3636 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
@@ -14,18 +14,92 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-$light:                           #444 !default;
-$stable:                          #EF3636 !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 $bg: "../img/bg.png";
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+.body-neo{
+  font-family: -apple-system, "Helvetica Neue", "Segoe WP", sans-serif !important;
+  color: #ffffff;
+  text-align: center;
+}
+.body-neo h1,
+.body-neo h2,
+.body-neo h3,
+.body-neo h4,
+.body-neo h5,
+.body-neo h6,
+.body-neo .h1,
+.body-neo .h2,
+.body-neo .h3,
+.body-neo .h4,
+.body-neo .h5,
+.body-neo .h6{
+  color: #ffffff;
+}
 
-.main-bg{
+.body-neo .pane,
+.body-neo .view{
   background: url($bg) center top;
   background-color: #000;
 }
-.bar.bar-stable .title{
-  color:#fff;
+.body-neo .bar.bar-positive{
+  background-color: #EF3636;
+  border:none;
 }
+.body-neo .tabs-positive > .tabs,
+.body-neo .tabs.tabs-positive {
+  background-color: #2e3f53;
+}
+
+.body-neo .tabs-striped .tabs {
+  border-color: #445569;
+}
+.body-neo .tab-item.tab-item-active,
+.body-neo .tab-item.active,
+.body-neo .tab-item.activated {
+  color: #ffffff;
+}
+.body-neo .tab-item {
+  color: #9ea1a8;
+}
+.body-neo .item.active,
+.body-neo .item.activated,
+.body-neo .item-complex.active .item-content,
+.body-neo .item-complex.activated .item-content,
+.body-neo .item .item-content.active,
+.body-neo .item .item-content.activated {
+  border-color: #445569;
+  background-color: #445569;
+}
+.body-neo .tabs,
+.body-neo .tabs-striped{
+  background-color: #333;
+  color:white;
+  border-color: #EF3636 !important;
+}
+.body-neo .tabs-striped .tab-item.tab-item-active{
+  border-color: #fff;
+}
+.body-neo .tab-item.middle {
+  background-color: #519ec8;
+  border-radius: 7px;
+  color: #2e3f53;
+  opacity: 1;
+}
+.body-neo .tabs-color-active-positive .tab-item {
+  color:#DDD;
+}
+.body-neo .tabs-color-active-positive .tab-item.tab-item-active{
+  color:#FFF;
+}
+
+// .main-bg{
+//   background: url($bg) center top;
+//   background-color: #000;
+// }
+// .bar.bar-stable .title{
+//   color:#fff;
+// }

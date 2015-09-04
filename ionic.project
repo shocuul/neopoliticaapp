@@ -1,6 +1,6 @@
 {
   "name": "NeoPoliticaApp",
-  "app_id": "",
+  "app_id": "d627abfa",
   "gulpStartupTasks": [
     "sass",
     "watch"

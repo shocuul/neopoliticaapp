@@ -1,5 +1,25 @@
 angular.module('starter.services', [])
 
+.factory('Columnas', function($http){
+  // var columnas =
+  // (function(){
+  //   reloadData();
+  // }());
+  //
+  // function reloadData(){
+  //   columnas = $http.get('http://neopoliticatv.org/category/columnistas?json=1').then(function(data){
+  //     columnas = data;
+  //   },function(response){
+  //     console.log(response)
+  //   });
+  // }
+  return {
+    all:function(){
+      return $http.get('http://neopoliticatv.org/category/columnistas?json=1');
+    }
+  }
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
