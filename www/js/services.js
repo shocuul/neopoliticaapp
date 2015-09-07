@@ -20,6 +20,14 @@ angular.module('starter.services', [])
   }
 })
 
+.factory('Noticias',function($http){
+  return {
+    all:function(){
+      return $http.get('http://neopoliticatv.org/category/noticias?json=1');
+    }
+  }
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

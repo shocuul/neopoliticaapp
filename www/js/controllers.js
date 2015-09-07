@@ -26,8 +26,10 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('NoticiasCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('NoticiasCtrl', function($scope,Noticias) {
+  $scope.posts = [];
+  var reqNoticias = Noticias.all();
+  reqNoticias.then(function(data){
+    $scope.posts = data.data.posts;
+  })
 });
