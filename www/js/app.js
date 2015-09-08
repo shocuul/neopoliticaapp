@@ -77,6 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
         controller: 'NoticiasCtrl'
       }
     }
+  })
+  .state('tab.single-noticias',{
+    url:'/noticias/:postId',
+    views:{
+      'tab-noticias':{
+        templateUrl:'templates/tab-single-noticias.html',
+        controller:'SingleNoticiasCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

@@ -1,7 +1,10 @@
 <ion-view view-title="Noticias">
   <ion-content>
+    <div class="container" ng-hide="hidespinner">
+      <ion-spinner></ion-spinner>
+    </div>
     <div class="list">
-      <a href="" class="item item-text-wrap" ng-repeat="post in posts">
+      <a ui-sref="tab.single-noticias({postId: post.id})" class="item item-text-wrap list-news" ng-repeat="post in posts">
         <news post="post"></news>
       </a>
     </div>

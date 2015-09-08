@@ -104,7 +104,7 @@ $imgoverlay:"../img/linebg-fade.png";
   bottom: 0px;
   left:0px;
   width: 100%;
-  height: 250px;
+  height: 200px;
   background-image: url($imgoverlay);
   background-position: center top;
   background-repeat: repeat-x;
@@ -133,7 +133,7 @@ $imgoverlay:"../img/linebg-fade.png";
     color:#FFF;
     text-decoration: none;
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left:20px;
     width: 80%;
     z-index: 9;
@@ -156,6 +156,33 @@ span.date{
 .main-image{
   display: block !important;
   position: relative !important;
+}
+.list-news{
+  padding: 0px;
+  border-top-color: #4D4D4D;
+  border-bottom-color: #202020;
+}
+.container{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.spinner svg {
+  width: 28px;
+  height: 28px;
+  stroke: #FFF;
+  fill: #FFF;
+}
+.spinner{
+  margin: 20px;
+}
+.spinner:after{
+    font-size: 10px;
+    line-height: 10px;
+    position: absolute;
+    top:60px;
+    left: 165px;
+    z-index: 10;
+    content: "Cargando...";
 }
 
 // .main-bg{

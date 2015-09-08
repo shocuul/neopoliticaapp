@@ -21,9 +21,22 @@ angular.module('starter.services', [])
 })
 
 .factory('Noticias',function($http){
+  var posts = [];
+  var reqAll = $http.get('http://neopoliticatv.org/category/noticias?json=1');
+  reqAll.then(function(data){
+    posts = data.data.posts;
+  })
   return {
     all:function(){
-      return $http.get('http://neopoliticatv.org/category/noticias?json=1');
+      return reqAll;
+    },
+    getPost:function(postId){
+      for(i=0;i<posts.length;i++){
+        if(posts[i].id === parseInt(postId)){
+          return posts[i];
+        }
+      }
+      return null;
     }
   }
 })

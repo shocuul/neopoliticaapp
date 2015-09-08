@@ -26,10 +26,16 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
+.controller('SingleNoticiasCtrl',function($scope,$stateParams,Noticias){
+  console.log($stateParams.postId);
+})
+
 .controller('NoticiasCtrl', function($scope,Noticias) {
   $scope.posts = [];
+  $scope.hidespinner = false;
   var reqNoticias = Noticias.all();
   reqNoticias.then(function(data){
     $scope.posts = data.data.posts;
+    $scope.hidespinner = true;
   })
 });
