@@ -1,1 +1,10 @@
-<h3 style="color:white;">Noticias</h3>
+<ion-view view-title="{{post.title}}">
+  <ion-content style="padding:5px 5px;">
+    <div class="post-container">
+      <img ng-src="{{post.thumbnail_images.slider.url}}" alt="{{post.slug}}" class="single-image">
+      <h2>{{post.title}}
+      <span class="date">{{post.date|date:shortDate}} | {{post.categories[0].title}}</span></h2>
+      <p ng-bind-html="post.content"></p>
+    </div>
+  </ion-content>
+</ion-view>

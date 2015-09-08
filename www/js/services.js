@@ -13,9 +13,15 @@ angular.module('starter.services', [])
   //     console.log(response)
   //   });
   // }
+
+  var columnas = [];
+  var reqAll = $http.get('http://neopoliticatv.org/category/columnistas?json=1');
+  reqAll.then(function(data){
+    columnas = data.data.posts;
+  })
   return {
     all:function(){
-      return $http.get('http://neopoliticatv.org/category/columnistas?json=1');
+      return reqAll;
     }
   }
 })
@@ -37,6 +43,45 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    }
+  }
+})
+.service('ColumasProvider',function(){
+  return{
+    getBackground:function(slug){
+      switch (slug) {
+        case 'contraesquina-politica':
+          return './img/columnafernando.jpg';
+          break;
+        case 'articulista-invitado':
+          return './img/columnahector.jpg';
+          break;
+        default:
+          return './img/default.jpg';
+          break;
+      }
+    },
+    getEditor:function(slug){
+      switch (slug) {
+        case 'contraesquina-politica':
+          return 'Fernando Martinez Plascencia'
+          break;
+        case 'articulista-invitado':
+          return 'Héctor Yunes Landa'
+          break;
+        case 'ventanas-rotas':
+          return 'Víctor Manuel Vallejo Cruz'
+          break;
+        case 'luis-alberto-chavez-focil':
+          return 'Luis A. Chávez'
+          break;
+        case 'chucho-mon':
+          return 'Chucho Mon'
+          break;
+        default:
+          return ' ';
+          break;
+      }
     }
   }
 })

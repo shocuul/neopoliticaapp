@@ -7806,6 +7806,39 @@ span.date {
   opacity: 0.9;
   position: relative; }
 
+.columnas {
+  opacity: 1;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  box-shadow: 0px 1px 3px 0px #141414;
+  border-top-color: #303030;
+  border-right-color: #303030;
+  border-left-color: #303030; }
+  .columnas img {
+    width: 100%; }
+  .columnas h2 {
+    font-size: 14px;
+    line-height: 16px;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    width: 60%;
+    z-index: 9; }
+    .columnas h2 span.column-name {
+      position: relative;
+      display: block;
+      font-size: 10px;
+      line-height: 10px; }
+    .columnas h2 span.editor {
+      position: relative;
+      display: block;
+      font-size: 10px;
+      line-height: 10px; }
+  .columnas p {
+    color: #fff;
+    text-decoration: none; }
+
 .main-image {
   display: block !important;
   position: relative !important; }
@@ -7820,19 +7853,33 @@ span.date {
   padding-bottom: 30px; }
 
 .spinner svg {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   stroke: #FFF;
   fill: #FFF; }
 
 .spinner {
   margin: 20px; }
 
-.spinner:after {
-  font-size: 10px;
-  line-height: 10px;
-  position: absolute;
-  top: 60px;
-  left: 165px;
-  z-index: 10;
-  content: "Cargando..."; }
+.single-image {
+  width: 100%; }
+
+.post-container {
+  background: #373737;
+  box-shadow: 0px 1px 3px 0px #141414;
+  border-top-color: #303030;
+  border-right-color: #303030;
+  border-left-color: #303030; }
+  .post-container h2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    line-height: 18px;
+    text-align: justify;
+    text-justify: inter-word; }
+    .post-container h2 span {
+      margin-top: 10px; }
+  .post-container p {
+    padding: 5px;
+    text-align: justify;
+    text-justify: inter-word; }

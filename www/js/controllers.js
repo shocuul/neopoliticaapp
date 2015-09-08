@@ -1,10 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('ColumnasCtrl', function($scope,$http,Columnas) {
+.controller('ColumnasCtrl', function($scope,$http,Columnas,ColumasProvider) {
+  $scope.columnas = [];
+  $scope.hidespinner = false;
   var columnas = Columnas.all();
   columnas.then(function(data){
-    console.log(data);
+    $scope.columnas = data.data.posts;
+    $scope.hidespinner = true;
   })
+
+  $scope.getName = function(slug){
+    return ColumasProvider.getEditor(slug);
+  }
+  $scope.getImageBackground = function(slug){
+    return ColumasProvider.getBackground(slug);
+  }
 })
 
 .controller('VideosCtrl', function($scope, Chats) {
@@ -27,7 +37,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SingleNoticiasCtrl',function($scope,$stateParams,Noticias){
-  console.log($stateParams.postId);
+  $scope.post = Noticias.getPost($stateParams.postId);
 })
 
 .controller('NoticiasCtrl', function($scope,Noticias) {

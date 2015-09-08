@@ -92,7 +92,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
   $urlRouterProvider.otherwise('/tab/columnas');
 
 })
-.config(function($httpProvider){
+.config(function($httpProvider, $ionicConfigProvider){
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  $ionicConfigProvider.backButton.previousTitleText(false).text('');
 });
