@@ -22,6 +22,14 @@ angular.module('starter.services', [])
   return {
     all:function(){
       return reqAll;
+    },
+    getPost:function(postId){
+      for(i=0;i<columnas.length;i++){
+        if(columnas[i].id === parseInt(postId)){
+          return columnas[i];
+        }
+      }
+      return null;
     }
   }
 })

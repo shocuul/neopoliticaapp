@@ -1,0 +1,9 @@
+<ion-view view-title="{{columna.categories[0].title}}">
+  <ion-content class="padding">
+    <div class="post-container">
+      <img src="{{columna.thumbnail_images.slider.url}}" alt="" class="single-image" ng-if="columna.thumbnail_images.slider.url">
+      <h2>{{columna.title}}</h2>
+      <p ng-bind-html="columna.content"></p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -49,6 +49,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
       }
     }
   })
+  .state('tab.single-columna',{
+    url:'/columnas/:postId',
+    views:{
+      'tab-columnas':{
+        templateUrl:'templates/columna-detail.html',
+        controller:'ColumnaDetailCtrl'
+      }
+    }
+  })
 
   .state('tab.videos', {
       url: '/videos',

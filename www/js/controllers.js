@@ -17,6 +17,10 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('ColumnaDetailCtrl', function($scope,$stateParams,Columnas){
+  $scope.columna = Columnas.getPost($stateParams.postId);
+})
+
 .controller('VideosCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
