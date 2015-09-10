@@ -7883,3 +7883,9 @@ span.date {
     padding: 5px;
     text-align: justify;
     text-justify: inter-word; }
+  .post-container img {
+    width: 100%;
+    height: 200px; }
+
+iframe {
+  width: 100%; }

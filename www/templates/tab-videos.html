@@ -1,17 +1,17 @@
 <ion-view view-title="Videos">
   <ion-content>
-    <ion-list>
-      <!-- href="#/tab/chats/{{chat.id}} -->
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+    <div class="row">
+      <div class="col col-50">
+        <a href="#/tab/videos/np-noticias"><img src="./img/np-noticias.png" alt="" /></a>
+      </div>
+      <div class="col col-50">
+        <a href="#/tab/videos/fz10"><img src="./img/fz10.png" alt="" /></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="./img/desconectado.jpg" class="single-image" alt="" />
+      </div>
+    </div>
   </ion-content>
 </ion-view>

@@ -69,7 +69,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
       }
     })
     .state('tab.single-video', {
-      url: '/videos/:videoId',
+      url: '/videos/:programName',
       views: {
         'tab-videos': {
           templateUrl: 'templates/video-detail.html',
