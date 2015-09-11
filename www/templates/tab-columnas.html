@@ -4,13 +4,13 @@
       <ion-spinner></ion-spinner>
     </div>
     <div class="list">
-      <a href="#/tab/columnas/{{columna.id}}" class="columnas" ng-repeat="columna in columnas">
+      <a href="#/tab/columnas/{{columna.id}}" class="columnas" collection-repeat="columna in columnas" item-height="183px">
         <img ng-src="{{getImageBackground(columna.categories[0].slug)}}" alt="">
         <h2>
           <span class="column-name">{{columna.categories[0].title}}</span>
           {{columna.title}}
           <span class="editor">{{getName(columna.categories[0].slug)}}</span></h2>
-
+      </a>
       </div>
     </div>
   </ion-content>

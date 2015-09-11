@@ -3,9 +3,9 @@ angular.module('starter.controllers', [])
 .controller('ColumnasCtrl', function($scope,$http,Columnas,ColumasProvider) {
   $scope.columnas = [];
   $scope.hidespinner = false;
-  var columnas = Columnas.all();
+  var columnas = Columnas.promise;
   columnas.then(function(data){
-    $scope.columnas = data.data.posts;
+    $scope.columnas = Columnas.all();
     $scope.hidespinner = true;
   })
 
@@ -80,9 +80,9 @@ angular.module('starter.controllers', [])
 .controller('NoticiasCtrl', function($scope,Noticias) {
   $scope.posts = [];
   $scope.hidespinner = false;
-  var reqNoticias = Noticias.all();
+  var reqNoticias = Noticias.promise;
   reqNoticias.then(function(data){
-    $scope.posts = data.data.posts;
+    $scope.posts = Noticias.all();
     $scope.hidespinner = true;
   })
 });

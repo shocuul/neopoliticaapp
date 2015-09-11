@@ -7871,6 +7871,7 @@ span.date {
   border-right-color: #303030;
   border-left-color: #303030; }
   .post-container h2 {
+    padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
     font-size: 20px;
