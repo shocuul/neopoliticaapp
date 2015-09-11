@@ -4,7 +4,7 @@
       <ion-spinner></ion-spinner>
     </div>
     <div class="list">
-      <a href="#/tab/columnas/{{columna.id}}" class="columnas" collection-repeat="columna in columnas" item-height="183px">
+      <a href="#/tab/columnas/{{columna.id}}" class="columnas" collection-repeat="columna in columnas">
         <img ng-src="{{getImageBackground(columna.categories[0].slug)}}" alt="">
         <h2>
           <span class="column-name">{{columna.categories[0].title}}</span>

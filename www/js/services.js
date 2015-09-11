@@ -42,7 +42,7 @@ angular.module('starter.services', [])
     posts = data.data.posts;
   })
   return {
-    promise,
+    promise:promise,
     all:function(){
       return posts;
     },
