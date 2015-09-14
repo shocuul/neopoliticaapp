@@ -7,8 +7,9 @@
 <ion-view view-title="{{name}}">
   <ion-content class="padding">
     <div class="list">
-      <div class="item" ng-repeat="video in videos">
-        {{converteUrlYoutube(video.custom_fields.tie_video_url)}}
+      <div class="item item-text-wrap post-container list-video" ng-repeat="video in videos">
+      <div ng-bind-html="converteUrlYoutube(video.custom_fields.tie_video_url)" class="mini-video"></div>
+      <h3 class="video-title">{{video.title}}</h3>
       </div>
     </div>
   </ion-content>

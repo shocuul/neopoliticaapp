@@ -7889,4 +7889,24 @@ span.date {
     height: 200px; }
 
 iframe {
-  width: 100%; }
+  width: 100%;
+  overflow: scroll !important;
+  height: 100%;
+  border: none; }
+
+.list-video {
+  margin-bottom: 10px; }
+
+.item {
+  border: none; }
+
+.video-title {
+  float: right;
+  position: absolute;
+  top: 2.5em;
+  right: 1em;
+  width: 40%; }
+
+.mini-video {
+  width: 50%;
+  height: 150px; }

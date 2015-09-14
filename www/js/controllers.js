@@ -34,6 +34,8 @@ angular.module('starter.controllers', [])
      buildListaProgramas();
   }());
 
+  //https://api.ustream.tv/channels/8317831/videos.json
+
   function buildListaProgramas(){
     $http.get('https://api.ustream.tv/channels/8317831.json').then(function(response){
       console.log(response.data);
@@ -46,13 +48,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('VideoDetailCtrl', function($scope, $stateParams, Chats, $http) {
+.controller('VideoDetailCtrl', function($scope, $stateParams, Chats, $http, $sce) {
   //console.log($stateParams.programName);
   $scope.videos = [];
 
   $scope.converteUrlYoutube = function(url){
-    var replace = url.replace("watch?v","embed/");
-    return '<iframe width="560" height="315" src="'+replace+'" frameborder="0" allowfullscreen></iframe>';
+    var string = ""+url;
+    var replace = string.replace("watch?v=","embed/");
+    var iframehtml = $sce.trustAsHtml('<iframe width="200" height="150" src="'+replace+'" frameborder="0" allowfullscreen></iframe>');
+    console.log(iframehtml)
+    return iframehtml;
   }
 
   switch ($stateParams.programName) {
