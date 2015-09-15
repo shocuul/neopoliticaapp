@@ -13,12 +13,19 @@ angular.module('starter.services', [])
   //     console.log(response)
   //   });
   // }
-
   var columnas = [];
-  var promise = $http.get('http://neopoliticatv.org/category/columnistas?json=1');
-  promise.then(function(data){
-    columnas = data.data.posts;
-  })
+  var currentPage = 1;
+  var urlPage = 'http://neopoliticatv.org/category/columnistas/page/'+currentPage+'?json=1';
+  function downloadData(){
+    self.promise = $http.get(urlPage);
+    promise.then(function(data){
+      columnas = data.data.posts;
+    })
+  }
+
+  (function(){
+    downloadData();
+  }());
   return {
     promise:promise,
     all:function(){
