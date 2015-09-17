@@ -18,8 +18,8 @@ angular.module('starter.services', [])
   var urlPage = 'http://neopoliticatv.org/category/columnistas/page/'+currentPage+'?json=1';
   function downloadData(){
     self.promise = $http.get(urlPage);
-    promise.then(function(data){
-      columnas = data.data.posts;
+    promise.then(function(response){
+      columnas = response.data.posts;
     })
   }
 
@@ -31,6 +31,13 @@ angular.module('starter.services', [])
     all:function(){
       return columnas;
     },
+    getPage:function(page){
+      columnas = [];
+      currentPage = page;
+      downloadData();
+      console.log(urlPage);
+    },
+    currentPage:currentPage,
     getPost:function(postId){
       for(i=0;i<columnas.length;i++){
         if(columnas[i].id === parseInt(postId)){
@@ -44,14 +51,34 @@ angular.module('starter.services', [])
 
 .factory('Noticias',function($http){
   var posts = [];
-  var promise = $http.get('http://neopoliticatv.org/category/noticias?json=1');
-  promise.then(function(data){
-    posts = data.data.posts;
-  })
+  var currentPage = 1;
+  var urlPage = 'http://neopoliticatv.org/category/noticias/page/'+currentPage+'?json=1';
+  // function downloadData(){
+  //   self.promise = $http.get(urlPage);
+  //   promise.then(function(response){
+  //     posts = response.data.posts;
+  //     console.log(posts);
+  //   })
+  // }
+  function buildUrl(){
+    urlPage = 'http://neopoliticatv.org/category/noticias/page/'+currentPage+'?json=1';
+  }
+  // (function(){
+  //   downloadData();
+  // }());
   return {
-    promise:promise,
+    // promise:promise,
+    currentPage:currentPage,
     all:function(){
-      return posts;
+      buildUrl();
+      return $http.get(urlPage).then(function(response){
+        posts = response.data.posts;
+        return posts;
+      })
+    },
+    setPage:function(page){
+      posts = [];
+      currentPage = page;
     },
     getPost:function(postId){
       for(i=0;i<posts.length;i++){
