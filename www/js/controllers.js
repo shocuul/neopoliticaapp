@@ -1,11 +1,46 @@
 angular.module('starter.controllers', [])
 
-.controller('ColumnasCtrl', function($scope,$http,Columnas,ColumasProvider) {
+.controller('ColumnasCtrl', function($scope,$http,Columnas,ColumasProvider,$ionicScrollDelegate) {
   $scope.columnas = [];
   $scope.hidespinner = false;
-  var columnas = Columnas.promise;
-  columnas.then(function(data){
-    $scope.columnas = Columnas.all();
+
+  $scope.isFirst = function(){
+    if(Columnas.currentPage()===1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  $scope.lastPage = function(){
+    if(Columnas.currentPage() === Columnas.maxPage()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  $scope.siguiente = function(){
+    $scope.hidespinner = false;
+    $ionicScrollDelegate.scrollTop();
+    $scope.columnas = [];
+    Columnas.setPage(Columnas.currentPage()-1);
+    Columnas.all().then(function(columnas){
+      $scope.columnas = columnas;
+      $scope.hidespinner = true;
+    })
+  }
+
+  $scope.anterior = function(){
+    $scope.hidespinner = false;
+    $ionicScrollDelegate.scrollTop();
+    $scope.columnas = [];
+    Columnas.setPage(Columnas.currentPage()+1);
+    Columnas.all().then(function(columnas){
+      $scope.columnas = columnas;
+      $scope.hidespinner = true;
+    })
+  }
+  Columnas.all().then(function(columnas){
+    $scope.columnas = columnas;
     $scope.hidespinner = true;
   })
 
@@ -82,25 +117,52 @@ angular.module('starter.controllers', [])
   $scope.post = Noticias.getPost($stateParams.postId);
 })
 
-.controller('NoticiasCtrl', function($scope,Noticias,$ionicLoading,$ionicScrollDelegate) {
+.controller('NoticiasCtrl', function($scope,Noticias,$ionicScrollDelegate) {
   $scope.posts = [];
   $scope.hidespinner = false;
+
+  $scope.isFirst = function(){
+    if(Noticias.currentPage()===1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  $scope.lastPage = function(){
+    if(Noticias.currentPage() === Noticias.maxPage()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  $scope.siguiente = function(){
+    $scope.hidespinner = false;
+    $ionicScrollDelegate.scrollTop();
+    $scope.posts = [];
+    Noticias.setPage(Noticias.currentPage()-1);
+    Noticias.all().then(function(posts){
+      $scope.posts = posts;
+      $scope.hidespinner = true;
+    })
+  }
+
   $scope.anterior = function(){
     $scope.hidespinner = false;
     $ionicScrollDelegate.scrollTop();
     $scope.posts = [];
-    Noticias.setPage(2);
+    //console.log(Noticias.currentPage());
+    Noticias.setPage(Noticias.currentPage()+1);
 
     Noticias.all().then(function(posts){
       $scope.posts = posts;
       // $scope.hidespinner = true;
-      $ionicLoading.hide();
       $scope.hidespinner = true;
-      console.log(Noticias.currentPage);
+      //console.log(Noticias.currentPage);
     })
   }
   Noticias.all().then(function(posts){
-    console.log(posts);
+    //console.log(posts);
     $scope.posts = posts;
     $scope.hidespinner = true;
   });

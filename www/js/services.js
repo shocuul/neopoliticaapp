@@ -1,43 +1,37 @@
 angular.module('starter.services', [])
 
 .factory('Columnas', function($http){
-  // var columnas =
-  // (function(){
-  //   reloadData();
-  // }());
-  //
-  // function reloadData(){
-  //   columnas = $http.get('http://neopoliticatv.org/category/columnistas?json=1').then(function(data){
-  //     columnas = data;
-  //   },function(response){
-  //     console.log(response)
-  //   });
-  // }
   var columnas = [];
   var currentPage = 1;
+  var maxPage = null;
   var urlPage = 'http://neopoliticatv.org/category/columnistas/page/'+currentPage+'?json=1';
-  function downloadData(){
-    self.promise = $http.get(urlPage);
-    promise.then(function(response){
-      columnas = response.data.posts;
-    })
+  function buildUrl(){
+    urlPage = 'http://neopoliticatv.org/category/columnistas/page/'+currentPage+'?json=1';
+    console.log(urlPage);
   }
-
-  (function(){
-    downloadData();
-  }());
   return {
-    promise:promise,
-    all:function(){
-      return columnas;
+    currentPage:function(){
+      return currentPage;
     },
-    getPage:function(page){
+    maxPage:function(){
+      return this.maxPage;
+    },
+    all:function(){
+      buildUrl();
+      console.log(urlPage);
+      return $http.get(urlPage).then(function(response){
+        console.log(response);
+        columnas = response.data.posts;
+        this.maxPage = response.data.pages;
+        console.log(columnas)
+        return columnas;
+      })
+    },
+    setPage:function(page){
       columnas = [];
       currentPage = page;
-      downloadData();
-      console.log(urlPage);
+      console.log(currentPage);
     },
-    currentPage:currentPage,
     getPost:function(postId){
       for(i=0;i<columnas.length;i++){
         if(columnas[i].id === parseInt(postId)){
@@ -52,6 +46,7 @@ angular.module('starter.services', [])
 .factory('Noticias',function($http){
   var posts = [];
   var currentPage = 1;
+  var maxPage = null;
   var urlPage = 'http://neopoliticatv.org/category/noticias/page/'+currentPage+'?json=1';
   // function downloadData(){
   //   self.promise = $http.get(urlPage);
@@ -68,11 +63,19 @@ angular.module('starter.services', [])
   // }());
   return {
     // promise:promise,
-    currentPage:currentPage,
+    currentPage:function(){
+      return currentPage;
+    },
+    maxPage:function(){
+      return this.maxPage;
+    },
     all:function(){
       buildUrl();
       return $http.get(urlPage).then(function(response){
         posts = response.data.posts;
+        //console.log(response);
+        this.maxPage = response.data.pages;
+        //console.log(this.maxPage);
         return posts;
       })
     },

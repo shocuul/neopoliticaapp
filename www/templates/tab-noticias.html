@@ -9,11 +9,17 @@
       </a>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col" ng-hide="isFirst()">
+        <button class="button button-assertive" ng-click="siguiente()" ng-show="hidespinner">
+          Noticias Recientes
+        </button>
+      </div>
+      <div class="col" ng-hide="lastPage()">
         <button class="button button-assertive" ng-click="anterior()" ng-show="hidespinner">
           Noticias Anteriores
         </button>
       </div>
+
     </div>
   </ion-content>
 </ion-view>

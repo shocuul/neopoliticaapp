@@ -12,6 +12,18 @@
           <span class="editor">{{getName(columna.categories[0].slug)}}</span></h2>
       </a>
       </div>
+      <div class="row">
+        <div class="col" ng-hide="isFirst()">
+          <button class="button button-assertive" ng-click="siguiente()" ng-show="hidespinner">
+            Columnas Recientes
+          </button>
+        </div>
+        <div class="col" ng-hide="lastPage()">
+          <button class="button button-assertive" ng-click="anterior()" ng-show="hidespinner">
+            Columnas Anteriores
+          </button>
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
