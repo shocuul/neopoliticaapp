@@ -56,7 +56,7 @@ angular.module('starter.controllers', [])
   $scope.columna = Columnas.getPost($stateParams.postId);
 })
 
-.controller('VideosCtrl', function($scope, Chats,$http) {
+.controller('VideosCtrl', function($scope, Chats,$http,$ionicModal,$ionicPlatform) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -64,6 +64,34 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+  var modalOpen = false;
+  $ionicModal.fromTemplateUrl('templates/modalVideo.html',{
+    scope:$scope
+  }).then(function(modal){
+    $scope.modal = modal;
+  });
+
+  $scope.showLiveStream = function(){
+    if(window.cordova){
+      screen.lockOrientation('landscape');
+    }
+    modalOpen = true;
+    $scope.modal.show();
+  }
+  $ionicPlatform.onHardwareBackButton(function() {
+    if(modalOpen){
+      $scope.cerrar();
+    }
+  });
+  $scope.cerrar = function(){
+    if(window.cordova){
+      screen.lockOrientation('portrait');
+    }
+    modalOpen = false;
+    $scope.modal.hide();
+  }
+
   $scope.programs = [];
   (function(){
      buildListaProgramas();
