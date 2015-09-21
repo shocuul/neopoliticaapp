@@ -1,5 +1,30 @@
 angular.module('starter.services', [])
 
+.factory('Videos',function($http){
+  var fz10 = [];
+  var npnoticias = [];
+  //https://api.ustream.tv/channels/8317831/videos.json
+  //https://api.ustream.tv/channels/8317831.json
+  return {
+    loadVideos:function(){
+      return $http.get('https://api.ustream.tv/channels/8317831/videos.json').then(function(response){
+        for (var i = 0; i < response.data.videos.length; i++) {
+          if(response.data.videos[i].title.indexOf('FZ10') >= 0){
+            fz10.push(response.data.videos[i]);
+          }else if(response.data.videos[i].title.indexOf('Noticias') >= 0)
+            npnoticias.push(response.data.videos[i]);
+        }
+      })
+    },
+    getFZ10Videos:function(){
+      return fz10;
+    },
+    getNPNoticiasVideos:function(){
+      return npnoticias;
+    }
+  }
+})
+
 .factory('Columnas', function($http){
   var columnas = [];
   var currentPage = 1;

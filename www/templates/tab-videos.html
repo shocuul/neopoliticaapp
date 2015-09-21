@@ -1,16 +1,17 @@
 <ion-view view-title="Videos">
   <ion-content>
     <div class="row">
-      <!-- <div class="col col-50">
+      <div class="col col-50">
         <a href="#/tab/videos/np-noticias"><img src="./img/np-noticias.png" alt="" /></a>
       </div>
       <div class="col col-50">
         <a href="#/tab/videos/fz10"><img src="./img/fz10.png" alt="" /></a>
       </div>
-    </div> -->
+    </div>
     <div class="row responsive-sm">
       <div class="col">
-        <img src="./img/desconectado.jpg" class="single-image" alt="" ng-click="showLiveStream()" />
+        <img src="./img/desconectado.jpg" class="single-image" ng-hide="online" alt="" />
+        <img src="./img/conectado.jpg" class="single-image" ng-click="showLiveStream()" ng-show="online" />
       </div>
       <div class="col post-container">
         <h2 style="text-align:center;">Programacion</h2>

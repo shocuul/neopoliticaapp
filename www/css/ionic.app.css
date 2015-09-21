@@ -7902,12 +7902,17 @@ span.date {
 .item {
   border: none; }
 
-.video-title {
+.play {
+  position: absolute;
+  width: inherit; }
+
+h3 .video-title {
   float: right;
   position: absolute;
-  top: 2.5em;
+  top: 4em;
   right: 1em;
-  width: 40%; }
+  width: 80%;
+  text-shadow: 1px solid #fff; }
 
 .mini-video {
   width: 50%;

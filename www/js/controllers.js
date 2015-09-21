@@ -56,7 +56,7 @@ angular.module('starter.controllers', [])
   $scope.columna = Columnas.getPost($stateParams.postId);
 })
 
-.controller('VideosCtrl', function($scope, Chats,$http,$ionicModal,$ionicPlatform) {
+.controller('VideosCtrl', function($scope, Chats,$http,$ionicModal,$ionicPlatform,Videos,$sce) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -64,6 +64,8 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+  $scope.currentEmbed = $sce.trustAsHtml('<iframe src="http://www.ustream.tv/embed/8317831?html5ui=1&autoplay=true" style="border: 0 none transparent;width: 100%; min-height: 100%;"  webkitallowfullscreen allowfullscreen frameborder="no"></iframe>');
 
   var modalOpen = false;
   $ionicModal.fromTemplateUrl('templates/modalVideo.html',{
@@ -95,13 +97,19 @@ angular.module('starter.controllers', [])
   $scope.programs = [];
   (function(){
      buildListaProgramas();
+     Videos.loadVideos();
   }());
 
   //https://api.ustream.tv/channels/8317831/videos.json
-
+  $scope.online = false;
   function buildListaProgramas(){
     $http.get('https://api.ustream.tv/channels/8317831.json').then(function(response){
       console.log(response.data);
+      if(response.data.channel.status === "live"){
+        $scope.online = true;
+      }else if(response.data.channel.status === "offair"){
+        $scope.online = false;
+      }
     })
   }
 
@@ -111,7 +119,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('VideoDetailCtrl', function($scope, $stateParams, Chats, $http, $sce) {
+.controller('VideoDetailCtrl', function($scope, $stateParams, Chats, $http, $sce,Videos) {
   //console.log($stateParams.programName);
   $scope.videos = [];
 
@@ -126,15 +134,11 @@ angular.module('starter.controllers', [])
   switch ($stateParams.programName) {
     case 'fz10':
       $scope.name = 'FZ10';
-      $http.get('http://neopoliticatv.org/category/programacion/fz10/?json=1').then(function(response){
-        $scope.videos = response.data.posts;
-      })
+      $scope.videos = Videos.getFZ10Videos();
       break;
     case 'np-noticias':
       $scope.name = 'NP Noticias';
-      $http.get('http://neopoliticatv.org/category/programacion/np-noticias/?json=1').then(function(response){
-        $scope.videos = response.data.posts;
-      })
+      $scope.videos = Videos.getNPNoticiasVideos();
       break;
     default:
   }

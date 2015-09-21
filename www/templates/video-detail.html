@@ -8,8 +8,12 @@
   <ion-content class="padding">
     <div class="list">
       <div class="item item-text-wrap post-container list-video" ng-repeat="video in videos">
-      <div ng-bind-html="converteUrlYoutube(video.custom_fields.tie_video_url)" class="mini-video"></div>
+        <img src="./img/play-button.png" class="play" alt="" />
+        <img ng-src="{{video.thumbnail.default}}" alt="" />
+      <!-- <div ng-bind-html="converteUrlYoutube(video.custom_fields.tie_video_url)" class="mini-video"></div> -->
       <h3 class="video-title">{{video.title}}</h3>
+      <!-- <iframe width="480" height="270" src="http://www.ustream.tv/embed/8317831?html5ui" allowfullscreen webkitallowfullscreen scrolling="no" frameborder="0" style="border: 0 none transparent;"></iframe> -->
+      <!-- <iframe width="480" height="270" src="http://www.ustream.tv/embed/recorded/73250068?html5ui" allowfullscreen webkitallowfullscreen scrolling="no" frameborder="0" style="border: 0 none transparent;"></iframe> -->
       </div>
     </div>
   </ion-content>
