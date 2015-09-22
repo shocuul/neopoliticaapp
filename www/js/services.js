@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('Videos',function($http){
+.factory('Videos',function($http,$sce){
   var fz10 = [];
   var npnoticias = [];
   //https://api.ustream.tv/channels/8317831/videos.json
@@ -21,6 +21,15 @@ angular.module('starter.services', [])
     },
     getNPNoticiasVideos:function(){
       return npnoticias;
+    },
+    getLiveStream:function(){
+      return $sce.trustAsHtml('<iframe src="http://www.ustream.tv/embed/8317831?html5ui=1&autoplay=true" style="border: 0 none transparent;width: 100%; min-height: 100%;"  webkitallowfullscreen allowfullscreen frameborder="no"></iframe>');
+    },
+    getIframeForId:function(videoId){
+      return $sce.trustAsHtml('<iframe src="http://www.ustream.tv/embed/recorded/'+videoId+'?html5ui=1&autoplay=true" style="border: 0 none transparent;width: 100%; min-height: 100%;"  webkitallowfullscreen allowfullscreen frameborder="no"></iframe>');
+    },
+    resetIframe:function(){
+      return $sce.trustAsHtml('<p></p>');
     }
   }
 })
@@ -128,6 +137,15 @@ angular.module('starter.services', [])
         case 'articulista-invitado':
           return './img/columnahector.jpg';
           break;
+        case 'chucho-mon':
+          return './img/columnachucho.jpg';
+          break;
+        case 'abriendo-brecha':
+          return './img/columnaabriendobrecha.jpg';
+          break;
+        case 'ventanas-rotas':
+          return './img/columnaventanasrotas.jpg';
+          break;
         default:
           return './img/default.jpg';
           break;
@@ -147,8 +165,11 @@ angular.module('starter.services', [])
         case 'luis-alberto-chavez-focil':
           return 'Luis A. Chávez'
           break;
-        case 'chucho-mon':
-          return 'Chucho Mon'
+        case 'claroscuros':
+          return 'José Luis Ortega Vidal'
+          break;
+        case 'abriendo-brecha':
+          return 'Andrés Rodríguez Cabrera'
           break;
         default:
           return ' ';

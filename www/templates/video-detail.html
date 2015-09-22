@@ -7,7 +7,7 @@
 <ion-view view-title="{{name}}">
   <ion-content class="padding">
     <div class="list">
-      <div class="item item-text-wrap post-container list-video" ng-repeat="video in videos">
+      <div class="item item-text-wrap post-container list-video" ng-repeat="video in videos" ng-click="showVideo(video.id)">
         <img src="./img/play-button.png" class="play" alt="" />
         <img ng-src="{{video.thumbnail.default}}" alt="" />
       <!-- <div ng-bind-html="converteUrlYoutube(video.custom_fields.tie_video_url)" class="mini-video"></div> -->

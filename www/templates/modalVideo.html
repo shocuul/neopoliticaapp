@@ -1,7 +1,7 @@
 <ion-modal-view>
   <ion-content>
     <button class="button button-clear button-assertive button-video" ng-click="cerrar()">Cerrar</button>
-    <div ng-bind-html="currentEmbed"></div>
+    <div ng-bind-html="currentEmbed" ng-click=”setFilters($event)”></div>
     <!-- <iframe src="http://www.ustream.tv/embed/recorded/73250068?html5ui=1&autoplay=true" style="border: 0 none transparent;width: 100%; min-height: 100%;"  webkitallowfullscreen allowfullscreen frameborder="no"></iframe> -->
   </ion-content>
 </ion-modal-view>

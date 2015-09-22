@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.currentEmbed = $sce.trustAsHtml('<iframe src="http://www.ustream.tv/embed/8317831?html5ui=1&autoplay=true" style="border: 0 none transparent;width: 100%; min-height: 100%;"  webkitallowfullscreen allowfullscreen frameborder="no"></iframe>');
+  $scope.currentEmbed = Videos.getLiveStream();
 
   var modalOpen = false;
   $ionicModal.fromTemplateUrl('templates/modalVideo.html',{
@@ -73,6 +73,10 @@ angular.module('starter.controllers', [])
   }).then(function(modal){
     $scope.modal = modal;
   });
+
+  $scope.setFilters = function (event) {
+    event.preventDefault();
+  };
 
   $scope.showLiveStream = function(){
     if(window.cordova){
@@ -92,6 +96,8 @@ angular.module('starter.controllers', [])
     }
     modalOpen = false;
     $scope.modal.hide();
+    $scope.currentEmbed = [];
+
   }
 
   $scope.programs = [];
@@ -119,9 +125,50 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('VideoDetailCtrl', function($scope, $stateParams, Chats, $http, $sce,Videos) {
+.controller('VideoDetailCtrl', function($scope, $stateParams, $http, $sce,Videos,$ionicModal,$ionicPlatform) {
   //console.log($stateParams.programName);
   $scope.videos = [];
+  $scope.currentEmbed;
+
+  var modalOpen = false;
+
+  $scope.setFilters = function (event) {
+    event.preventDefault();
+  };
+
+
+  $ionicModal.fromTemplateUrl('templates/modalVideo.html',{
+    scope:$scope
+  }).then(function(modal){
+    $scope.modal = modal;
+  });
+
+  $scope.showVideo = function(videoId){
+    $scope.currentEmbed = Videos.getIframeForId(videoId);
+    if(window.cordova){
+      screen.lockOrientation('landscape');
+    }
+    modalOpen = true;
+    $scope.modal.show();
+  }
+  $ionicPlatform.onHardwareBackButton(function() {
+    if(modalOpen){
+      $scope.cerrar();
+    }
+  });
+  $scope.cerrar = function(){
+    if(window.cordova){
+      screen.lockOrientation('portrait');
+    }
+    modalOpen = false;
+    $scope.currentEmbed = [];
+    $scope.modal.hide();
+  }
+
+
+
+
+
 
   $scope.converteUrlYoutube = function(url){
     var string = ""+url;
